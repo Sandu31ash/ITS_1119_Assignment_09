@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 09</title>
+
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+        div:first-child{
+            width: 740px;
+            height: 50px;
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            left: 4px;
+        }
+
+        .div1{
+            width: 100px;
+            height: 40px;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: 320px;
+            border-radius: 8px;
+            /*border: 1px solid white;*/
+        }
+
+        .div1:nth-child(2){
+            left: 425px;
+        }
+
+        .div1:nth-child(3){
+            left: 530px;
+        }
+
+        .div1:nth-child(4){
+            left: 635px;
+        }
+
+        .div1:nth-child(5){
+            left: 740px;
+        }
+
+        .div1:nth-child(6){
+            left: 845px;
+        }
+
+        .div1:nth-child(7){
+            left: 950px;
+        }
+
+        button{
+            position: relative;
+            left: 46.4vw;
+            top: 60vh;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div></div>
+    <div class="div1"></div>
+    <div class="div1"></div>
+    <div class="div1"></div>
+    <div class="div1"></div>
+    <div class="div1"></div>
+    <div class="div1"></div>
+    <div class="div1"></div>
+
+<!--    <section>-->
+        <button type="button" id="start">Start</button>
+        <button type="button" id="stop">Stop</button>
+<!--    </section>-->
+
+    <audio src="./assests/audios/audio.mp3" id="audio"></audio>
+
+
+<script src="./assests/js/lib/jquery.min.js"></script>
+
+<script>
+
+    // var styles1 = {
+    //     border: "1px solid black",
+    //     width: "500px",
+    //     height: "100px"
+    // }
+
+    // $("div").first().css(styles1);
+
+
+
+    var curr_light = -1;
+    var curr_direction = "RIGHT";
+    var light_count = 7;
+    var interval_id = null;
+
+    const updateLight = () => {
+        $(".div1").css("background", "white");
+        if(curr_direction === "RIGHT"){
+            curr_light++;
+            $(".div1").eq(curr_light).css("background","red");
+            if(curr_light === light_count - 1){
+                curr_direction = "LEFT";
+            }
+        }else{
+            curr_light--;
+            $(".div1").eq(curr_light).css("background","red");
+
+            if(curr_light === 0){
+                curr_direction = "RIGHT";
+            }
+        }
+    }
+
+    $("#start").on('click', ()=>{
+        if (interval_id === null){
+            interval_id = setInterval(updateLight, 100);
+            $("#audio")[0].play();
+        }
+    });
+
+    $("#stop").on('click', ()=>{
+        // interval_id = setInterval(updateLight, 100);
+        clearInterval(interval_id);
+        interval_id = null;
+        $("#audio")[0].pause();
+    });
+
+
+
+</script>
+
+</body>
+</html>
