@@ -11,7 +11,7 @@
         }
 
         div:first-child{
-            width: 740px;
+            width: 635px;
             height: 50px;
             border: 1px solid red;
             position: absolute;
@@ -20,7 +20,7 @@
             left: 0;
             right: 0;
             margin: auto;
-            left: 4px;
+            left: 20px;
         }
 
         .div1{
@@ -31,33 +31,32 @@
             top: 0;
             bottom: 0;
             margin: auto;
-            left: 320px;
             border-radius: 8px;
             /*border: 1px solid white;*/
         }
 
         .div1:nth-child(2){
-            left: 425px;
+            left: 380px;
         }
 
         .div1:nth-child(3){
-            left: 530px;
+            left: 485px;
         }
 
         .div1:nth-child(4){
-            left: 635px;
+            left: 590px;
         }
 
         .div1:nth-child(5){
-            left: 740px;
+            left: 695px;
         }
 
         .div1:nth-child(6){
-            left: 845px;
+            left: 800px;
         }
 
         .div1:nth-child(7){
-            left: 950px;
+            left: 905px;
         }
 
         button{
@@ -81,7 +80,7 @@
     <div class="div1"></div>
     <div class="div1"></div>
     <div class="div1"></div>
-    <div class="div1"></div>
+<!--    <div class="div1"></div>-->
 
 <!--    <section>-->
         <button type="button" id="start">Start</button>
@@ -117,7 +116,7 @@
             $(".div1").eq(curr_light).css("background","red");
             if(curr_light === light_count - 1){
                 curr_direction = "LEFT";
-            }
+            }3
         }else{
             curr_light--;
             $(".div1").eq(curr_light).css("background","red");
@@ -126,6 +125,8 @@
                 curr_direction = "RIGHT";
             }
         }
+        $(".div1").eq(curr_light-1).css("background","#ffc0c0");
+        $(".div1").eq(curr_light+1).css("background","#ffc0c0");
     }
 
     $("#start").on('click', ()=>{
